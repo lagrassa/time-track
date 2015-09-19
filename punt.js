@@ -9,14 +9,15 @@
       // instantiates the pie chart, passes in the data and
       // draws it.
       function drawChart() {
-
+          var hoursPunted = 10;
+          var hoursTooled = 4;
         // Create the data table.
         var data = new google.visualization.DataTable();
         data.addColumn('string', 'Activity');
         data.addColumn('number', 'Time spent');
         data.addRows([
-          ['Punting', 5],
-          ['Tooling', 8],
+          ['Punting', hoursPunted],
+          ['Tooling', hoursTooled],
         ]);
 
         // Set chart options
