@@ -1,3 +1,8 @@
+var data = 5;
+drawChartGivenData(5);
+
+
+function drawChartGivenData(data) {
 
       // Load the Visualization API and the piechart package.
       google.load('visualization', '1.0', {'packages':['corechart']});
@@ -29,4 +34,4 @@
         var chart = new google.visualization.PieChart(document.getElementById('puntchart'));
         chart.draw(data, options);
       }
-
+}
