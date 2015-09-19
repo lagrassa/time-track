@@ -1,4 +1,5 @@
 $(document).ready(function() {
+  Parse.initialize('bLxJPXQ34sup0hAmY8DEdELkxgWQgLgQT47dCxnf', 'FsrRgGQ2irMaA0imiB8KWK8r9eiVD6pkdLpGMzk2');
   $('#userModal').on('show.bs.modal', function(event) {
     var button = $(event.relatedTarget);
     var type = button.data('type');
@@ -16,6 +17,7 @@ $(document).ready(function() {
   if (Parse.User.current()) {
     $('#login').hide();
     $('#signup').hide();
+    $('#fblogin').hide()
   } else {
     $('#logout').hide();
   }
