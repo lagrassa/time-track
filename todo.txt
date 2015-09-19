@@ -1,0 +1,16 @@
+#TODO
+
+USER LOGIN
+-make user login
+-store a subject table for each user
+-be able to retrieve said subject table for each user
+-be able to add classes and make those fields in the subject table
+
+DATA WORK
+-display the data for that week in a circle graph (medium)
+-display the data distribution for the past few weeks in a line graph (hard)
+-display the hours spent per class in a table (easy)
+
+ANDROID WORK
+-make timer page that sends the timing to the parse database
+
