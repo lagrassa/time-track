@@ -8,26 +8,12 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
    <script type="text/javascript" src="https://www.parsecdn.com/js/parse-1.0.19.min.js"></script>
-  <script>
-
-     Parse.initialize('bLxJPXQ34sup0hAmY8DEdELkxgWQgLgQT47dCxnf', 'FsrRgGQ2irMaA0imiB8KWK8r9eiVD6pkdLpGMzk2');
-     var sampleTimeTable = Parse.Object.extend("sampleTimeTable");
-
-    var sampleTimeTable = new sampleTimeTable();
-
-    sampleTimeTable.set("6.034", 8);
-    sampleTimeTable.set("6.004", 10);
-
-    //We call the save method, and pass in success and failure callback functions.
-    sampleTimeTable.save(null, {
-        success: function(item) {
-        //Success Callback
-    },
-    error: function(error) {
-        //Failure Callback
-    }
-    });
-  </script>
+   <script type="text/javascript" src="makeTable.js"</script>
+   <script>
+        $( document ).ready(function() {
+            console.log( "ready!" );
+        });
+    </script>
 </head>
 <body>
 
