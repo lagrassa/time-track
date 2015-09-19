@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Tooling Tracker</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="https://www.parsecdn.com/js/parse-1.0.19.min.js"></script>
+ <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+
+</head>
+<body>
+
+<div class="container">
+  <div class="jumbotron">
+    <h1>Tooling Tracker</h1>
+    <p>Figure out if your classes are actually 12 units</p>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-6">
+      <h3>Input Classes</h3>
+       <button id = 'submitButton' type="button">Submit!</button> 
+
+    </div>
+    <div class="col-sm-6">
+      <h3>Description</h3>
+           <p> Tell us which classes you are taking. We will log how many hours you have spent on each assignment per week, and give you an idea of which classes are taking up the most time, and a more realistic idea of how much time you have been spending on a course </p>
+    </div>
+  </div>
+</div>
+<script>
+ $(#submitButton) 
+  function setClassNames (){
+  Parse.initialize("bLxJPXQ34sup0hAmY8DEdELkxgWQgLgQT47dCxnf", "FsrRgGQ2irMaA0imiB8KWK8r9eiVD6pkdLpGMzk2");
+  var user = Parse.User.current();
+  timeTable.set('Classes', classArray) 
+  user.set('userSubjectTable', timeTable);
+  }
+  
+</script>
+</body>
+</html>
