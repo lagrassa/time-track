@@ -5,12 +5,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-  <script type="text/javascript" src="https://www.parsecdn.com/js/parse-1.0.19.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="makeTable.js"></script>
-  <script type="text/javascript" src="login.js"></script>
-  <script type="text/javascript" src="index.js"></script>
+  <script type="text/javascript" src="https://www.parsecdn.com/js/parse-1.0.19.min.js"></script>
+ <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+  <script type="text/javascript" src="index.js"</script>
+  <script type="text/javascript" src="login.js"</script>
 
 </head>
 <body>
@@ -101,15 +101,42 @@
     <button type="button" class="btn btn-default" onclick="logout()" id="fblogout">Facebook Logout</button>
     <!-- <fb:login-button scope="public_profile,email" onlogin="login()", id='fblogin' ></fb:login-button> -->
   </div>
+
   <div class="row">
-    <div class="col-sm-4">
+    <div class="col-sm-6">
       <h3>Current Time Table</h3>
+        <table class="table">
+    <thead>
+      <tr>
+        <th>Class</th>
+        <th>Hours Spent This Week</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="success">
+        <td>6.034</td>
+        <td>12</td>
+      </tr>
+      <tr class="danger">
+        <td>6.004</td>
+        <td>15</td>
+      </tr>
+      <tr class="info">
+        <td>21G.611</td>
+        <td>3</td>
+      </tr>
+      <tr class="success">
+        <td>6.005</td>
+        <td>20</td>
+      </tr>
+    </tbody>
+  </table>
     </div>
-    <div class="col-sm-4">
+    <div class="col-sm-6">
       <h3>Current Time Distribution</h3>
-    </div>
-    <div class="col-sm-4">
-      <h3>Time Distribution Over Time</h3>
+
+        <div id="piechart" style="width: 900px; height: 500px;"></div>
+        <div id="puntchart" style="width: 900px; height: 500px;"></div>
     </div>
   </div>
 </div>
@@ -153,5 +180,7 @@
   </div>
 </div>
 
+    <script src="circles.js">    </script>
+    <script src = "punt.js"> </script>
 </body>
 </html>

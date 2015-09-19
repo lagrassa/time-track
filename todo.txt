@@ -9,7 +9,7 @@ USER LOGIN
 DATA WORK
 -display the data for that week in a circle graph (medium)
 -display the data distribution for the past few weeks in a line graph (hard)
--display the hours spent per class in a table (easy)
+-display the hours spent per class in a table (easy)- lagrassa
 
 ANDROID WORK
 -make timer page that sends the timing to the parse database
