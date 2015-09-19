@@ -8,7 +8,7 @@ $(document).ready(function() {
       modal.find('button').on('click', function() { signup(); });
     }
     else {
-      modal.find('button').on('click', function() { login(); });
+      modal.find('button').on('click', function() { alert('login'); login(); });
     }
     console.log(modal.find('button'));
   });
