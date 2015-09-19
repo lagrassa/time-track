@@ -1,4 +1,6 @@
 $(document).ready(function() {
+  $('#fblogin').hide();
+  $('$fblogout').hide();
   $('#userModal').on('show.bs.modal', function(event) {
     var button = $(event.relatedTarget);
     var type = button.data('type');
@@ -16,6 +18,7 @@ $(document).ready(function() {
   if (Parse.User.current()) {
     $('#login').hide();
     $('#signup').hide();
+    $('#fblogin').hide()
   } else {
     $('#logout').hide();
   }
