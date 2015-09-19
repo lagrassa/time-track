@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Tooling Tracker</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+   <script type="text/javascript" src="https://www.parsecdn.com/js/parse-1.0.19.min.js"></script>
+  <script>
+     
+     Parse.initialize('bLxJPXQ34sup0hAmY8DEdELkxgWQgLgQT47dCxnf', 'FsrRgGQ2irMaA0imiB8KWK8r9eiVD6pkdLpGMzk2'); 
+     var sampleTimeTable = Parse.Object.extend("sampleTimeTable");
+
+    var sampleTimeTable = new sampleTimeTable();
+
+    sampleTimeTable.set("6.034", 8);
+    sampleTimeTable.set("6.004", 10);
+
+    //We call the save method, and pass in success and failure callback functions.
+    sampleTimeTable.save(null, {       
+        success: function(item) {
+        //Success Callback 
+    },
+    error: function(error) {
+        //Failure Callback
+    }
+    });
+  </script>
+</head>
+<body>
+
+<div class="container">
+  <div class="jumbotron">
+    <h1>Tooling Tracker</h1>
+    <p>Figure out if your classes are actually 12 units</p> 
+  </div>
+  <div class="row">
+    <div class="col-sm-4">
+      <h3>Current Time Table</h3>
+    </div>
+    <div class="col-sm-4">
+      <h3>Current Time Distribution</h3>        
+    </div>
+    <div class="col-sm-4">
+      <h3>Time Distribution Over Time</h3>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
+
