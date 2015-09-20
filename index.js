@@ -7,17 +7,23 @@ $(document).ready(function() {
     var modal = $(this);
     modal.find('.modal-title').text(type);
     if (type === 'Sign up!') {
-      modal.find('button').on('click', function() { signup(); });
+      modal.find('button').on('click', function(e) {
+        e.preventDefault();
+        signup();
+      });
     }
     else {
-      modal.find('button').on('click', function() { alert('login'); login(); });
+      modal.find('button').on('click', function(e) {
+        e.preventDefault();
+        login();
+      });
     }
   });
 
   if (Parse.User.current()) {
     $('#login').hide();
     $('#signup').hide();
-    $('#fblogin').hide()
+    $('#fblogin').hide();
   } else {
     $('#logout').hide();
   }
@@ -48,20 +54,25 @@ function signup() {
   });
 }
 
+function showModal() {
+  $('#userModal').modal('show');
+}
+
 function login() {
   var username = document.getElementById('email').value;
   var password = document.getElementById('pwd').value;
-
-  Parse.User.logIn(username, password, {
+  console.log(username);
+  console.log(password);
+  Parse.User.logIn('asdf@gmail.com', 'asdf', {
     success: function(user) {
-      console.log('success');
       $('#llogin').hide();
       $('#ssignup').hide();
       $('#logout').show();
-      alert(user);
+      $('#userModal').modal('hide');
     },
     error: function(user, error) {
-      alert("Error: " + error.code + " " + error.message);
+      console.log(error);
+      // alert("Error: " + error.code + " " + error.message);
     }
   });
 }

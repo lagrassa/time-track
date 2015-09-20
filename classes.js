@@ -36,8 +36,8 @@ function getDataAndDrawChart() {
   var query = new Parse.Query("sampleTimeTable");
   query.get(timeTableID, {
     success: function(timeTable) {
-      var classArray = timeTable.get("classes");
-      console.log(classArray);
+      var classes = timeTable.get("classes");
+      console.log(classes);
 
       drawChart(classes);
     },

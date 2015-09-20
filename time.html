@@ -7,75 +7,12 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="https://www.parsecdn.com/js/parse-1.0.19.min.js"></script>
+  <script type="text/javascript" src="https://parse.com/downloads/javascript/parse-1.6.2.min.js"></script>
   <script type="text/javascript" src="https://www.google.com/jsapi"></script>
   <script type="text/javascript" src="index.js"></script>
  <!-- <script type="text/javascript" src="makeTable.js"></script> -->
-
 </head>
 <body>
-<script>
-  // This is called with the results from from FB.getLoginStatus().
-  function statusChangeCallback(response) {
-    // The response object is returned with a status field that lets the
-    // app know the current login status of the person.
-    // Full docs on the response object can be found in the documentation
-    // for FB.getLoginStatus().
-    if (response.status === 'connected') {
-      // Logged into your app and Facebook.
-      $('#fblogin').hide();
-      $('#fblogout').show();
-    } else if (response.status === 'not_authorized') {
-      // The person is logged into Facebook, but not your app.
-      document.getElementById('status').innerHTML = 'Please log ' +
-        'into this app.';
-    } else {
-      // The person is not logged into Facebook, so we're not sure if
-      // they are logged into this app or not.
-      $('#fblogin').show();
-      $('#fblogout').hide();
-    }
-  }
-
-  function fblogin() {
-    Parse.FacebookUtils.logIn(null, {
-      success: function(user) {
-        if (!user.existed()) {
-          alert("New user created!");
-        } else {
-          alert("User logged in!");
-        }
-        statusChangeCallback('connected');
-      }, error: function(user, error) {
-        alert("Error code: " + error.code + " " + error.message);
-      }
-    });
-  }
-
-  function fblogout() {
-    FB.logout(function(response) {
-      console.log('logged out');
-    })
-  }
-
-  window.fbAsyncInit = function() {
-    Parse.FacebookUtils.init({ // this line replaces FB.init
-      appId      : '1651077461842015', // Facebook App ID
-      status     : true,  // check Facebook Login status
-      cookie     : true,  // enable cookies to allow Parse to access the session
-      xfbml      : true,  // initialize Facebook social plugins on the page
-      version    : 'v2.3' // point to the latest Facebook Graph API version
-    });
-  };
-
-  (function(d, s, id){
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) {return;}
-    js = d.createElement(s); js.id = id;
-    js.src = "//connect.facebook.net/en_US/sdk.js";
-    fjs.parentNode.insertBefore(js, fjs);
-  }(document, 'script', 'facebook-jssdk'));
-</script>
 
 <div class="container">
   <div class="jumbotron">
@@ -84,9 +21,6 @@
     <button type="button" class="btn btn-default" data-type='Sign up!' data-toggle="modal" data-target="#userModal" id='ssignup'>Signup</button>
     <button type="button" class="btn btn-default" data-type='Login!' data-toggle="modal" data-target="#userModal" id='llogin'>Login</button>
     <button type="button" class="btn btn-default" onclick="logout()" id='logout'>Log out</button>
-    <button type="button" class="btn btn-default" onclick="fblogin()" id="fblogin">Facebook Login</button>
-    <button type="button" class="btn btn-default" onclick="fblogout()" id="fblogout">Facebook Logout</button>
-    <!-- <fb:login-button scope="public_profile,email" onlogin="login()", id='login' ></fb:login-button> -->
   </div>
 
   <div class="row">
