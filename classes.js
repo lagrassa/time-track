@@ -9,47 +9,58 @@ google.setOnLoadCallback(getDataAndDrawChart);
 // instantiates the pie chart, passes in the data and
 // draws it.
 
+function fillTable(kerberos) {
+  var SampleTimeTable = Parse.Object.extend("sampleTimeTable");
+  var query = new Parse.Query("sampleTimeTable");
+  query.equalTo("kerberos", kerberos);
+  query.find({
+    success: function(timeTable) {
+      var classes = timeTable.get('classes');
+      for (var course in classes) {
+        if (classes.hasOwnProperty(course)) {
+          $('tbody').append('<tr><td>' + course + '</td><td>' + classes.course + '</td>');
+        }
+      }
+    },
+    error: function(error) {
+      alert("Error: " + error.code + " " + error.message);
+    }
+  })
+}
+
 function getDataAndDrawChart() {
   //var user = Parse.User.current();
   //var timeTableID = user.get("userSubjectTableID");
-  var timeTableID = "EnkiXoKN10";
+  var timeTableID = "LG7RB4vLd9";
   var SampleTimeTable = Parse.Object.extend("sampleTimeTable");
-  var query = new Parse.Query(SampleTimeTable);
-    query.get(timeTableID, {
-      success: function(object) {
-          console.log(object);
-          var timeTable = object;
-          //drawChart();
-       },
+  var query = new Parse.Query("sampleTimeTable");
+  query.get(timeTableID, {
+    success: function(timeTable) {
+      var classArray = timeTable.get("classes");
+      console.log(classArray);
+
+      drawChart(classes);
+    },
       error: function(object, error) {
       // error is an instance of Parse.Error.
           console.log(error);
       }
-     });
+   });
  }
 
-function drawChart() {
-  var stringClasses = user.get("Classes");
-  var stringClasses = ["6.005", "6.004", "6.036", "Russian"];
-  var class1hours = timeTable.get("class1");
-  var class2hours = timeTable.get("class2");
-  var class3hours = timeTable.get("class3");
-  var class4hours = timeTable.get("class4");
-  var class1hours = 5;
-  var class2hours = 5;
-  var class3hours = 5;
-  var class4hours = 5;
+function drawChart(classes) {
+  //var stringClasses = user.get("Classes");
+  //var stringClasses = ["6.005", "6.004", "6.036", "Russian"];
   // Create the data table.
   var data = new google.visualization.DataTable();
+  console.log("DRAW CHART");
   data.addColumn('string', 'Class');
   data.addColumn('number', 'Time spent');
-
-  data.addRows([
-    ['6.034', 8],
-    ['Russian', 10],
-    ['6.004', 13],
-    ['6.005', 20],
-  ]);
+  for (var course in classes) {
+    if (classes.hasOwnProperty(course)) {
+      data.addRows([String(course), classes.course]);
+    }
+  }
 
   // Set chart options
   var options = {'title':'Class Time Distribution',
