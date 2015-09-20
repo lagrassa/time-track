@@ -27,7 +27,7 @@ function drawChart(user) {
   data.addColumn('string', 'Class');
   data.addColumn('number', 'Time spent');
   for (var course in classes) {
-  if (classes.hasOwnProperty(course)) {
+    if (classes.hasOwnProperty(course)) {
       data.addRow([String(course), classes[course]]);
     }
   }
