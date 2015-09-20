@@ -1,24 +1,44 @@
 Parse.initialize("bLxJPXQ34sup0hAmY8DEdELkxgWQgLgQT47dCxnf", "FsrRgGQ2irMaA0imiB8KWK8r9eiVD6pkdLpGMzk2");
 
-var user = Parse.User.current();
-if (user) {
-  for (var i = 0; i < user.get('Classes'); i++) {
-  }
-}
-
-
-
 // Load the Visualization API and the piechart package.
 google.load('visualization', '1.0', {'packages':['corechart']});
-var data = 5;
 // Set a callback to run when the Google Visualization API is loaded.
 //google.setOnLoadCallback(function() {drawChart(data)});
-google.setOnLoadCallback(drawChart);
+google.setOnLoadCallback(getDataAndDrawChart);
 // Callback that creates and populates a data table,
 // instantiates the pie chart, passes in the data and
 // draws it.
-function drawChart() {
 
+function getDataAndDrawChart() {
+  //var user = Parse.User.current();
+  //var timeTableID = user.get("userSubjectTableID");
+  var timeTableID = "EnkiXoKN10";
+  var SampleTimeTable = Parse.Object.extend("sampleTimeTable");
+  var query = new Parse.Query(SampleTimeTable);
+    query.get(timeTableID, {
+      success: function(object) {
+          console.log(object);
+          var timeTable = object;
+          //drawChart();
+       },
+      error: function(object, error) {
+      // error is an instance of Parse.Error.
+          console.log(error);
+      }
+     });
+ }
+
+function drawChart() {
+  var stringClasses = user.get("Classes");
+  var stringClasses = ["6.005", "6.004", "6.036", "Russian"];
+  var class1hours = timeTable.get("class1");
+  var class2hours = timeTable.get("class2");
+  var class3hours = timeTable.get("class3");
+  var class4hours = timeTable.get("class4");
+  var class1hours = 5;
+  var class2hours = 5;
+  var class3hours = 5;
+  var class4hours = 5;
   // Create the data table.
   var data = new google.visualization.DataTable();
   data.addColumn('string', 'Class');
