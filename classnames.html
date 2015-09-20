@@ -58,12 +58,12 @@
       //var user = Parse.User.current();
 
     var timeTable= new Parse.Object("sampleTimeTable");
-    var classArray = {};
+    var classes = {};
     $('.class').each(function() {
       var className = $(this).val();
-      classArray.className = 0;
+      classes.className = 0;
     })
-    user.set('classes', classArray);
+    user.set('classes', classes);
     user.save();
     });
 </script>
