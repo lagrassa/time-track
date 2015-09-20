@@ -9,10 +9,13 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
   <script type="text/javascript" src="https://parse.com/downloads/javascript/parse-1.6.2.min.js"></script>
   <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-  <script type="text/javascript" src="index.js"></script>
  <!-- <script type="text/javascript" src="makeTable.js"></script> -->
 </head>
 <body>
+<style >
+      body { background: url(clock.jpg); }
+      .container { background: ; }
+</style>
 <script>
     function redirect() {
         window.location.replace("classnames.html");
@@ -22,23 +25,22 @@
   <div class="jumbotron">
     <h1>Tooling Tracker</h1>
     <p>Figure out if your classes are actually 12 units</p>
-    <button type="button" class="btn btn-default" data-type='Sign up!' data-toggle="modal" data-target="#userModal" id='ssignup'>Signup</button>
-    <button type="button" class="btn btn-default" data-type='Login!' data-toggle="modal" data-target="#userModal" id='llogin'>Login</button>
-    <button type="button" class="btn btn-default" onclick="logout()" id='logout'>Log out</button>
-    <button type="button" class="btn btn-default" onclick="redirect()" id='logout'>Add Class Names (Click if you have no data)</button>
+    <button type="button" class="btn btn-default btn-lg" data-type='Sign up!' data-toggle="modal" data-target="#userModal" id='ssignup'>Signup</button>
+    <button type="button" class="btn btn-default btn-lg" data-type='Login!' data-toggle="modal" data-target="#userModal" id='llogin'>Login</button>
+    <button type="button" class="btn btn-default btn-lg" onclick="logout()" id='logout'>Log out</button>
+    <button type="button" class="btn btn-default btn-lg" onclick="redirect()" id='logout'>Add Class Names (Needed for Data Analysis)</button>
   </div>
 
   <div class="row">
     <div class="col-sm-6">
       <h3>How it Works</h3>
       <h2>Punt/Tool Distribution </h2>
-      <h2>Window Name Data Analysis</h2>
+          <p> We run a Window Analysis tool that uses regular expressions to find the name of your window. Depending on apps that you determine to be punting (like Facebook) or tooling (a terminal), you can keep track of what time you spend punting and tooling, and watch the ratio on a graph. </p>
     </div>
     <div class="col-sm-6">
       <h3>Current Time Distribution</h3>
+        <p> For activities that don't take place on a computer, use our Android application to time when you start activities for each class. You can log how much time you spend on each class this way, and determine how many hours per week you spend on it. </p>
 
-        <div id="piechart" style="width: 900px; height: 500px;"></div>
-        <div id="puntchart" style="width: 900px; height: 500px;"></div>
     </div>
   </div>
 </div>

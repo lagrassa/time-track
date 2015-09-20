@@ -21,6 +21,9 @@ $(document).ready(function() {
   });
 
   if (Parse.User.current()) {
+    Parse.User.current().fetch();
+    console.log('here');
+    console.log(Parse.User.current().get('classes'));
     $('#login').hide();
     $('#signup').hide();
     fillTable();
@@ -42,9 +45,10 @@ function signup() {
     success: function(user) {
       // Hooray! Let them use the app now.
       $('#login').hide();
-      $('$signup').hide();
+      $('#signup').hide();
+      $('#userModal').modal('hide');
     },
-    error: function(user, error) {
+    error: function(error) {
       // Show the error message somewhere and let the user try again.
       console.log("Error: " + error.code + " " + error.message);
     }
@@ -58,7 +62,7 @@ function showModal() {
 function login() {
   var username = document.getElementById('email').value;
   var password = document.getElementById('pwd').value;
-  Parse.User.logIn('asdf@gmail.com', 'asdf', {
+  Parse.User.logIn(username, password, {
     success: function(user) {
       $('#llogin').hide();
       $('#ssignup').hide();
@@ -67,7 +71,7 @@ function login() {
       fillTable();
       drawChart();
     },
-    error: function(user, error) {
+    error: function(error) {
       console.log("Error: " + error.code + " " + error.message);
     }
   });

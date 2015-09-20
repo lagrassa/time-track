@@ -14,6 +14,7 @@ function fillTable() {
   }
   $('tbody > tr').remove();
   var classes = user.get('classes');
+  console.log(classes);
   var coloring = ['success', 'danger', 'info'];
   var counter = 0;
   for (var course in classes) {

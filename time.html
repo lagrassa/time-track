@@ -10,18 +10,25 @@
   <script type="text/javascript" src="https://parse.com/downloads/javascript/parse-1.6.2.min.js"></script>
   <script type="text/javascript" src="https://www.google.com/jsapi"></script>
   <script type="text/javascript" src="index.js"></script>
- <!-- <script type="text/javascript" src="makeTable.js"></script> -->
 </head>
 <body>
 <script>
-    function redirect() {
-        window.location.replace("classnames.html");
-    }
+  function redirect() {
+    window.location.replace("classnames.html");
+  }
 </script>
 <div class="container">
   <div class="jumbotron">
     <h1>Tooling Tracker</h1>
+<<<<<<< HEAD
     <p>Figure out if your classes are actually 12 units</p>
+=======
+    <p class='greeting'>Figure out if your classes are actually 12 units</p>
+    <button type="button" class="btn btn-default" data-type='Sign up!' data-toggle="modal" data-target="#userModal" id='ssignup'>Signup</button>
+    <button type="button" class="btn btn-default" data-type='Login!' data-toggle="modal" data-target="#userModal" id='llogin'>Login</button>
+    <button type="button" class="btn btn-default" onclick="logout()" id='logout'>Log out</button>
+    <button type="button" class="btn btn-default" onclick="redirect()" id='setClasses'>Add Class Names (Click if you have no data)</button>
+>>>>>>> 21daae8d32fe245d8de2eb01babc7ddaed624822
   </div>
 
   <div class="row">
