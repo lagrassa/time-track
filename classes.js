@@ -18,7 +18,7 @@ function fillTable() {
   var counter = 0;
   for (var course in classes) {
     if (classes.hasOwnProperty(course)) {
-      $('tbody').append('<tr class=' + coloring[counter] + '><td>' + course + '</td><td>' + classes[1] + '</td>');
+      $('tbody').append('<tr style="font-size: 35px;" class=' + coloring[counter] + '><td>' + course + '</td><td>' + classes[1] + '</td>');
       counter = (counter + 1) % 3;
     }
   }
