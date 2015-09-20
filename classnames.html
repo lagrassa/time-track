@@ -41,6 +41,7 @@
     	  <input type="text" class="class form-control">
         <br>
   	  </form>
+      <button class='btn btn-primary active' type='button' id='cancel'>Cancel</button>
       <button class='btn btn-primary active' id='moreInput' type='button'>Add more classes</button>
       <button class = "btn btn-primary active" id = 'submitButton' type="button">Submit!</button>
     </div>
@@ -58,7 +59,9 @@
     $('form').append("Class " + classCount + ":<br><input type='text' class='form-control'><br>");
     classCount += 1;
   });
-
+  $('#cancel').click(function() {
+    window.location.replace('time.html');
+  })
   $('#submitButton').click(function() {
     var classes = {};
     $('.class').each(function() {
