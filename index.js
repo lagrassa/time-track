@@ -48,6 +48,7 @@ function signup() {
       $('#login').hide();
       $('#signup').hide();
       $('#userModal').modal('hide');
+      window.location.replace('time.html');
     },
     error: function(error) {
       // Show the error message somewhere and let the user try again.
@@ -56,19 +57,17 @@ function signup() {
   });
 }
 
-function showModal() {
-  $('#userModal').modal('show');
-}
-
 function login() {
   var username = document.getElementById('email').value;
   var password = document.getElementById('pwd').value;
   Parse.User.logIn(username, password, {
     success: function(user) {
+      console.log('here');
       $('#llogin').hide();
       $('#ssignup').hide();
       $('#logout').show();
       $('#userModal').modal('hide');
+      window.location.replace('time.html');
       fillTable(user);
       drawChart(user);
     },
