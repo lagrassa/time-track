@@ -1,6 +1,10 @@
 Parse.initialize("bLxJPXQ34sup0hAmY8DEdELkxgWQgLgQT47dCxnf", "FsrRgGQ2irMaA0imiB8KWK8r9eiVD6pkdLpGMzk2");
+
 var user = Parse.User.current();
-var classes = user.get('Classes');
+if (user) {
+  for (var i = 0; i < user.get('Classes'); i++) {
+  }
+}
 
 
 
@@ -14,26 +18,23 @@ google.setOnLoadCallback(drawChart);
 // instantiates the pie chart, passes in the data and
 // draws it.
 function drawChart() {
-  var stringClasses = ["6.005", "6.004", "6.036", "Russian"];
-  var class1hours = 5;
-  var class2hours = 5;
-  var class3hours = 5;
-  var class4hours = 5;
+
   // Create the data table.
   var data = new google.visualization.DataTable();
   data.addColumn('string', 'Class');
   data.addColumn('number', 'Time spent');
+
   data.addRows([
-    [stringClasses[0], class1hours],
-    [stringClasses[1], class2hours],
-    [stringClasses[2], class3hours],
-    [stringClasses[3], class4hours],
+    ['6.034', 8],
+    ['Russian', 10],
+    ['6.004', 13],
+    ['6.005', 20],
   ]);
 
   // Set chart options
   var options = {'title':'Class Time Distribution',
-                 'width':800,
-                 'height':600};
+                 'width':400,
+                 'height':300};
 
   // Instantiate and draw our chart, passing in some options.
   var chart = new google.visualization.PieChart(document.getElementById('piechart'));

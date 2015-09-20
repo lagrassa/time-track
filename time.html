@@ -37,16 +37,7 @@
     }
   }
 
-  // This function is called when someone finishes with the Login
-  // Button.  See the onlogin handler attached to it in the sample
-  // code below.
-  function checkLoginState() {
-    FB.getLoginStatus(function(response) {
-      statusChangeCallback(response);
-    });
-  }
-
-  function login() {
+  function fblogin() {
     Parse.FacebookUtils.logIn(null, {
       success: function(user) {
         if (!user.existed()) {
@@ -61,13 +52,12 @@
     });
   }
 
-  function logout() {
+  function fblogout() {
     FB.logout(function(response) {
-      checkLoginState();
+      console.log('logged out');
     })
   }
 
-  Parse.initialize("bLxJPXQ34sup0hAmY8DEdELkxgWQgLgQT47dCxnf", "FsrRgGQ2irMaA0imiB8KWK8r9eiVD6pkdLpGMzk2");
   window.fbAsyncInit = function() {
     Parse.FacebookUtils.init({ // this line replaces FB.init
       appId      : '1651077461842015', // Facebook App ID
@@ -75,9 +65,6 @@
       cookie     : true,  // enable cookies to allow Parse to access the session
       xfbml      : true,  // initialize Facebook social plugins on the page
       version    : 'v2.3' // point to the latest Facebook Graph API version
-    });
-    FB.getLoginStatus(function(response) {
-      statusChangeCallback(response);
     });
   };
 
@@ -94,11 +81,11 @@
   <div class="jumbotron">
     <h1>Tooling Tracker</h1>
     <p>Figure out if your classes are actually 12 units</p>
-    <!-- <button type="button" class="btn btn-default" data-type='Sign up!' data-toggle="modal" data-target="#userModal" id='ssignup'>Signup</button>
-    <button type="button" class="btn btn-default" data-type='Login!' data-toggle="modal" data-target="#userModal" id='llogin'>Login</button> -->
-    <!-- <button type="button" class="btn btn-default" onclick="logout()" id='logout'>Log out</button> -->
-    <button type="button" class="btn btn-default" onclick="login()" id="fblogin">Facebook Login</button>
-    <button type="button" class="btn btn-default" onclick="logout()" id="fblogout">Facebook Logout</button>
+    <button type="button" class="btn btn-default" data-type='Sign up!' data-toggle="modal" data-target="#userModal" id='ssignup'>Signup</button>
+    <button type="button" class="btn btn-default" data-type='Login!' data-toggle="modal" data-target="#userModal" id='llogin'>Login</button>
+    <button type="button" class="btn btn-default" onclick="logout()" id='logout'>Log out</button>
+    <button type="button" class="btn btn-default" onclick="fblogin()" id="fblogin">Facebook Login</button>
+    <button type="button" class="btn btn-default" onclick="fblogout()" id="fblogout">Facebook Logout</button>
     <!-- <fb:login-button scope="public_profile,email" onlogin="login()", id='login' ></fb:login-button> -->
   </div>
 
