@@ -13,14 +13,21 @@ google.setOnLoadCallback(getDataAndDrawChart);
 function getDataAndDrawChart() {
   //var user = Parse.User.current();
   //var timeTableID = user.get("userSubjectTableID");
-  var timeTableID = "EnkiXoKN10";
+  var timeTableID = "LG7RB4vLd9";
   var SampleTimeTable = Parse.Object.extend("sampleTimeTable");
-  var query = new Parse.Query(SampleTimeTable);
+  var query = new Parse.Query("sampleTimeTable");
     query.get(timeTableID, {
       success: function(object) {
           console.log(object);
-          var timeTable = object;
-          //drawChart();
+           timeTable = object;
+	  var class1hours = timeTable.get("class1");
+	  var class2hours = timeTable.get("class2");
+	  var class3hours = timeTable.get("class3");
+	  var class4hours = timeTable.get("class4");
+          var classArray = timeTable.get("Classes");
+          console.log(classArray);
+          
+          drawChart(classArray, class1hours, class2hours, class3hours, class4hours);
        },
       error: function(object, error) {
       // error is an instance of Parse.Error.
@@ -29,26 +36,23 @@ function getDataAndDrawChart() {
      });
  }
 
-function drawChart() {
-  var stringClasses = user.get("Classes");
-  var stringClasses = ["6.005", "6.004", "6.036", "Russian"];
-  var class1hours = timeTable.get("class1");
-  var class2hours = timeTable.get("class2");
-  var class3hours = timeTable.get("class3");
-  var class4hours = timeTable.get("class4");
-  var class1hours = 5;
-  var class2hours = 5;
-  var class3hours = 5;
-  var class4hours = 5;
+function drawChart(stringClasses, class1hours, class2hours, class3hours, class4hours) {
+  //var stringClasses = user.get("Classes");
+  //var stringClasses = ["6.005", "6.004", "6.036", "Russian"];
   // Create the data table.
   var data = new google.visualization.DataTable();
+  console.log("DRAW CHART");
   data.addColumn('string', 'Class');
   data.addColumn('number', 'Time spent');
+  console.log(class1hours);
+  console.log(class2hours);
+  console.log(class3hours);
+  console.log(class4hours);
   data.addRows([
-    [stringClasses[0], class1hours],
-    [stringClasses[1], class2hours],
-    [stringClasses[2], class3hours],
-    [stringClasses[3], class4hours],
+    [String(stringClasses[0]), class1hours],
+    [String(stringClasses[1]), class2hours],
+    [String(stringClasses[2]), class3hours],
+    [String(stringClasses[3]), class4hours],
   ]);
 
   // Set chart options
