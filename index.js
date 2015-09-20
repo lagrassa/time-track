@@ -62,7 +62,6 @@ function login() {
   var password = document.getElementById('pwd').value;
   Parse.User.logIn(username, password, {
     success: function(user) {
-      console.log('here');
       $('#llogin').hide();
       $('#ssignup').hide();
       $('#logout').show();

@@ -10,7 +10,7 @@
   <script type="text/javascript" src="https://parse.com/downloads/javascript/parse-1.6.2.min.js"></script>
   <script type="text/javascript" src="https://www.google.com/jsapi"></script>
   <script type="text/javascript" src="index.js"></script>
- <!-- <script type="text/javascript" src="makeTable.js"></script> -->
+  <script type="text/javascript" src="classes.js"></script>
 </head>
 <body>
 <style >
@@ -19,6 +19,9 @@
 </style>
 <script>
     Parse.initialize("bLxJPXQ34sup0hAmY8DEdELkxgWQgLgQT47dCxnf", "FsrRgGQ2irMaA0imiB8KWK8r9eiVD6pkdLpGMzk2");
+    if (Parse.User.current()) {
+      window.location.replace('time.html');
+    }
     function redirect() {
         window.location.replace("classnames.html");
     }
