@@ -21,13 +21,14 @@ $(document).ready(function() {
   });
 
   if (Parse.User.current()) {
-    Parse.User.current().fetch();
-    console.log('here');
-    console.log(Parse.User.current().get('classes'));
+    Parse.User.current().fetch({
+      success: function(user) {
+        fillTable(user);
+        drawChart(user);
+      }
+    });
     $('#login').hide();
     $('#signup').hide();
-    fillTable();
-    drawChart();
   } else {
     $('#logout').hide();
   }
@@ -68,8 +69,8 @@ function login() {
       $('#ssignup').hide();
       $('#logout').show();
       $('#userModal').modal('hide');
-      fillTable();
-      drawChart();
+      fillTable(user);
+      drawChart(user);
     },
     error: function(error) {
       console.log("Error: " + error.code + " " + error.message);

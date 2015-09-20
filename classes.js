@@ -7,14 +7,9 @@ google.load('visualization', '1.0', {'packages':['corechart']});
 // instantiates the pie chart, passes in the data and
 // draws it.
 
-function fillTable() {
-  var user = Parse.User.current();
-  if (!user) {
-    return;
-  }
+function fillTable(user) {
   $('tbody > tr').remove();
   var classes = user.get('classes');
-  console.log(classes);
   var coloring = ['success', 'danger', 'info'];
   var counter = 0;
   for (var course in classes) {
@@ -36,20 +31,24 @@ function fillTable() {
   }
 }
 
-function drawChart() {
-  var user = Parse.User.current();
+function drawChart(user) {
   var classes = user.get('classes');
   // Create the data table.
   var data = new google.visualization.DataTable();
   data.addColumn('string', 'Class');
   data.addColumn('number', 'Time spent');
   for (var course in classes) {
+<<<<<<< HEAD
          var underScoreIndex = course.indexOf('_')
          var major = course.slice(0,underScoreIndex);
          var courseNumber = course.slice(underScoreIndex+1, course.length);
          var courseName = major + "." + courseNumber;
     if (classes.hasOwnProperty(course)) {
       data.addRow([String(courseName), classes[course]]);
+=======
+  if (classes.hasOwnProperty(course)) {
+      data.addRow([String(course), classes[course]]);
+>>>>>>> 4a6a1f8ab1b456306e92d4edeb9307e23ca4125f
     }
   }
 
