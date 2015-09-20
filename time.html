@@ -13,7 +13,11 @@
  <!-- <script type="text/javascript" src="makeTable.js"></script> -->
 </head>
 <body>
-
+<script>
+    function redirect() {
+        window.location.replace("classnames.html");
+    }
+</script>
 <div class="container">
   <div class="jumbotron">
     <h1>Tooling Tracker</h1>
@@ -21,6 +25,7 @@
     <button type="button" class="btn btn-default" data-type='Sign up!' data-toggle="modal" data-target="#userModal" id='ssignup'>Signup</button>
     <button type="button" class="btn btn-default" data-type='Login!' data-toggle="modal" data-target="#userModal" id='llogin'>Login</button>
     <button type="button" class="btn btn-default" onclick="logout()" id='logout'>Log out</button>
+    <button type="button" class="btn btn-default" onclick="redirect()" id='logout'>Add Class Names (Click if you have no data)</button>
   </div>
 
   <div class="row">
