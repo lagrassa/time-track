@@ -7,8 +7,9 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="https://www.parsecdn.com/js/parse-1.0.19.min.js"></script>
- <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+  <script type="text/javascript" src="https://parse.com/downloads/javascript/parse-1.6.2.min.js"></script>
+  <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+  <script type="text/javascript" src="classes.js"></script>
 
 </head>
 <body>
@@ -46,6 +47,8 @@
   </div>
 </div>
 <script>
+  Parse.initialize("bLxJPXQ34sup0hAmY8DEdELkxgWQgLgQT47dCxnf", "FsrRgGQ2irMaA0imiB8KWK8r9eiVD6pkdLpGMzk2");
+
   var classCount = 5;
   $('#moreInput').on('click', function() {
     $('form').append("Class " + classCount + ":<br><input type='text' class='form-control'><br>");
@@ -53,19 +56,29 @@
   });
 
   $('#submitButton').click(function() {
-    Parse.initialize("bLxJPXQ34sup0hAmY8DEdELkxgWQgLgQT47dCxnf", "FsrRgGQ2irMaA0imiB8KWK8r9eiVD6pkdLpGMzk2");
-    //Parse.User.logIn("butts", "buttocks").then(function(user) {
-      //var user = Parse.User.current();
-
-    var timeTable= new Parse.Object("sampleTimeTable");
     var classes = {};
     $('.class').each(function() {
-      var className = $(this).val();
-      classes.className = 0;
-    })
-    user.set('classes', classes);
-    user.save();
+      var c = $(this).val();
+      if (c === '') {
+        return true;
+      }
+      c = c.replace('.', '_');
+      classes[c] = 0;
     });
+    var user = Parse.User.current();
+    user.set('classes', classes);
+    user.save(null, {
+      success: function() {
+        window.location.replace('time.html');
+      },
+      error: function(user, error) {
+        console.log(error);
+        console.log(user);
+        // Execute any logic that should take place if the save fails.
+        // error is a Parse.Error with an error code and message.
+      }
+    });
+  });
 </script>
 </body>
 </html>

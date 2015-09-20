@@ -14,11 +14,12 @@ function fillTable() {
   }
   $('tbody > tr').remove();
   var classes = user.get('classes');
+  console.log(classes);
   var coloring = ['success', 'danger', 'info'];
   var counter = 0;
   for (var course in classes) {
     if (classes.hasOwnProperty(course)) {
-      $('tbody').append('<tr style="font-size: 35px;" class=' + coloring[counter] + '><td>' + course + '</td><td>' + classes[1] + '</td>');
+      $('tbody').append('<tr style="font-size: 35px;" class=' + coloring[counter] + '><td>' + course + '</td><td>' + classes[course] + '</td>');
       counter = (counter + 1) % 3;
     }
   }
