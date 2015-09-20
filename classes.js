@@ -1,5 +1,7 @@
 Parse.initialize("bLxJPXQ34sup0hAmY8DEdELkxgWQgLgQT47dCxnf", "FsrRgGQ2irMaA0imiB8KWK8r9eiVD6pkdLpGMzk2");
 var user = Parse.User.current();
+var classes = user.get('Classes');
+
 
 // Load the Visualization API and the piechart package.
 google.load('visualization', '1.0', {'packages':['corechart']});
