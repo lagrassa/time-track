@@ -22,7 +22,25 @@
   <div class="row">
     <div class="col-sm-6">
       <h3>Input Classes</h3>
-       <button id = 'submitButton' type="button">Submit!</button> 
+      <form>
+        <p>
+          <input type='text' class="class form-control">
+        </p>
+        <p>
+          <input type='text' class="class form-control">
+        </p>
+        <p>
+          <input type='text' class="class form-control">
+        </p>
+        <p>
+          <input type='text' class="class form-control">
+        </p>
+        <p>
+          <input type='text' class="class form-control">
+        </p>
+      </form>
+      <button id='moreInput' type='button'>Add more classes</button>
+      <button id = 'submitButton' type="button">Submit!</button>
 
     </div>
     <div class="col-sm-6">
@@ -32,14 +50,22 @@
   </div>
 </div>
 <script>
- $(#submitButton) 
-  function setClassNames (){
-  Parse.initialize("bLxJPXQ34sup0hAmY8DEdELkxgWQgLgQT47dCxnf", "FsrRgGQ2irMaA0imiB8KWK8r9eiVD6pkdLpGMzk2");
-  var user = Parse.User.current();
-  timeTable.set('Classes', classArray) 
-  user.set('userSubjectTable', timeTable);
-  }
-  
+  $('#submitButton').on('click', function() {
+    Parse.initialize("bLxJPXQ34sup0hAmY8DEdELkxgWQgLgQT47dCxnf", "FsrRgGQ2irMaA0imiB8KWK8r9eiVD6pkdLpGMzk2");
+    var user = Parse.User.current();
+    var classes = [];
+    $('.class').each(function () {
+      classes.push($(this).text);
+    });
+    console.log(classes);
+    timeTable.set('Classes', classArray);
+    user.set('userSubjectTable', timeTable);
+  });
+
+  $('#moreInput').on('click', function() {
+    $('form').append("<p><input type='text' class='form-control'></p>");
+  });
+
 </script>
 </body>
 </html>
