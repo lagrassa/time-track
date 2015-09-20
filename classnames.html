@@ -54,20 +54,20 @@
 
   $('#submitButton').click(function() {
     Parse.initialize("bLxJPXQ34sup0hAmY8DEdELkxgWQgLgQT47dCxnf", "FsrRgGQ2irMaA0imiB8KWK8r9eiVD6pkdLpGMzk2");
-    Parse.User.logIn("butts", "buttocks").then(function(user) {
-      var user = Parse.User.current();
-    }, function(error) {
+    //Parse.User.logIn("butts", "buttocks").then(function(user) {
+      //var user = Parse.User.current();
 
-    });
     var timeTable= new Parse.Object("sampleTimeTable");
     var classArray = [];
     $('.class').each(function() {
-      var className = $(this).text();
-      classArray.push({$(this).text(): 0});
+      console.log($(this));
+      var className = $(this).val();
+      classArray.push(className);
     })
     console.log(classArray);
-    user.set('Classes', classArray);
-  });
+    //user.set('Classes', classArray);
+
+    });
 </script>
 </body>
 </html>
