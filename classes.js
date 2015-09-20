@@ -9,23 +9,21 @@ google.setOnLoadCallback(getDataAndDrawChart);
 // instantiates the pie chart, passes in the data and
 // draws it.
 
-function fillTable(kerberos) {
-  var SampleTimeTable = Parse.Object.extend("sampleTimeTable");
-  var query = new Parse.Query("sampleTimeTable");
-  query.equalTo("kerberos", kerberos);
-  query.find({
-    success: function(timeTable) {
-      var classes = timeTable.get('classes');
-      for (var course in classes) {
-        if (classes.hasOwnProperty(course)) {
-          $('tbody').append('<tr><td>' + course + '</td><td>' + classes.course + '</td>');
-        }
-      }
-    },
-    error: function(error) {
-      alert("Error: " + error.code + " " + error.message);
+function fillTable() {
+  var user = Parse.User.current();
+  if (!user) {
+    return;
+  }
+  $('tbody > tr').remove();
+  var classes = user.get('classes');
+  var coloring = ['success', 'danger', 'info'];
+  var counter = 0;
+  for (var course in classes) {
+    if (classes.hasOwnProperty(course)) {
+      $('tbody').append('<tr class=' + coloring[counter] + '><td>' + course + '</td><td>' + classes[1] + '</td>');
+      counter = (counter + 1) % 3;
     }
-  })
+  }
 }
 
 function getDataAndDrawChart() {
