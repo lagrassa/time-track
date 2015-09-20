@@ -28,7 +28,11 @@ function drawChart(user) {
   data.addColumn('number', 'Time spent');
   for (var course in classes) {
     if (classes.hasOwnProperty(course)) {
-      data.addRow([String(course), classes[course]]);
+      var underScoreIndex = course.indexOf('_')
+      var major = course.slice(0,underScoreIndex);
+      var courseNumber = course.slice(underScoreIndex+1, course.length);
+      var courseName = major + "." + courseNumber;
+      data.addRow([String(courseName), classes[course]]);
     }
   }
 

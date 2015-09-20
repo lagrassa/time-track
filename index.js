@@ -83,4 +83,5 @@ function logout() {
   $('#llogin').show();
   $('#ssignup').show();
   $('#logout').hide();
+  window.location.replace('home.html');
 }
