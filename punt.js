@@ -14,8 +14,8 @@ function drawChartGivenData(data) {
       // instantiates the pie chart, passes in the data and
       // draws it.
       function drawChart() {
-          var hoursPunted = 10;
-          var hoursTooled = 4;
+          var hoursPunted = 6;
+          var hoursTooled = 6;
         // Create the data table.
         var data = new google.visualization.DataTable();
         data.addColumn('string', 'Activity');
@@ -27,8 +27,8 @@ function drawChartGivenData(data) {
 
         // Set chart options
         var options = {'title':'Punt/Tool Distribution',
-                       'width':400,
-                       'height':300};
+                       'width':800,
+                       'height':600};
 
         // Instantiate and draw our chart, passing in some options.
         var chart = new google.visualization.PieChart(document.getElementById('puntchart'));

@@ -1,4 +1,5 @@
 
+
 // Load the Visualization API and the piechart package.
 google.load('visualization', '1.0', {'packages':['corechart']});
 var data = 5;
@@ -9,22 +10,26 @@ google.setOnLoadCallback(drawChart);
 // instantiates the pie chart, passes in the data and
 // draws it.
 function drawChart() {
-
+  var stringClasses = ["6.005", "6.004", "6.036", "Russian"];
+  var class1hours = 5;
+  var class2hours = 5;
+  var class3hours = 5;
+  var class4hours = 5;
   // Create the data table.
   var data = new google.visualization.DataTable();
   data.addColumn('string', 'Class');
   data.addColumn('number', 'Time spent');
   data.addRows([
-    ['6.034', 8],
-    ['Russian', 10],
-    ['6.004', 13],
-    ['6.005', 20],
+    [stringClasses[0], class1hours],
+    [stringClasses[1], class2hours],
+    [stringClasses[2], class3hours],
+    [stringClasses[3], class4hours],
   ]);
 
   // Set chart options
   var options = {'title':'Class Time Distribution',
-                 'width':400,
-                 'height':300};
+                 'width':800,
+                 'height':600};
 
   // Instantiate and draw our chart, passing in some options.
   var chart = new google.visualization.PieChart(document.getElementById('piechart'));
