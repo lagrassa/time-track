@@ -2,9 +2,7 @@ Parse.initialize("bLxJPXQ34sup0hAmY8DEdELkxgWQgLgQT47dCxnf", "FsrRgGQ2irMaA0imiB
 
 // Load the Visualization API and the piechart package.
 google.load('visualization', '1.0', {'packages':['corechart']});
-// Set a callback to run when the Google Visualization API is loaded.
-//google.setOnLoadCallback(function() {drawChart(data)});
-// google.setOnLoadCallback(getDataAndDrawChart);
+
 // Callback that creates and populates a data table,
 // instantiates the pie chart, passes in the data and
 // draws it.

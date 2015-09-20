@@ -77,4 +77,5 @@ function logout() {
   Parse.User.logOut();
   $('#llogin').show();
   $('#ssignup').show();
+  $('#logout').hide();
 }
