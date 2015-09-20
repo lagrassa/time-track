@@ -1,4 +1,3 @@
-
 Parse.initialize("bLxJPXQ34sup0hAmY8DEdELkxgWQgLgQT47dCxnf", "FsrRgGQ2irMaA0imiB8KWK8r9eiVD6pkdLpGMzk2");
 
 // Load the Visualization API and the piechart package.
@@ -10,33 +9,46 @@ google.setOnLoadCallback(getDataAndDrawChart);
 // instantiates the pie chart, passes in the data and
 // draws it.
 
+function fillTable(kerberos) {
+  var SampleTimeTable = Parse.Object.extend("sampleTimeTable");
+  var query = new Parse.Query("sampleTimeTable");
+  query.equalTo("kerberos", kerberos);
+  query.find({
+    success: function(timeTable) {
+      var classes = timeTable.get('classes');
+      for (var course in classes) {
+        if (classes.hasOwnProperty(course)) {
+          $('tbody').append('<tr><td>' + course + '</td><td>' + classes.course + '</td>');
+        }
+      }
+    },
+    error: function(error) {
+      alert("Error: " + error.code + " " + error.message);
+    }
+  })
+}
+
 function getDataAndDrawChart() {
   //var user = Parse.User.current();
   //var timeTableID = user.get("userSubjectTableID");
   var timeTableID = "LG7RB4vLd9";
   var SampleTimeTable = Parse.Object.extend("sampleTimeTable");
   var query = new Parse.Query("sampleTimeTable");
-    query.get(timeTableID, {
-      success: function(object) {
-          console.log(object);
-           timeTable = object;
-	  var class1hours = timeTable.get("class1");
-	  var class2hours = timeTable.get("class2");
-	  var class3hours = timeTable.get("class3");
-	  var class4hours = timeTable.get("class4");
-          var classArray = timeTable.get("Classes");
-          console.log(classArray);
-          
-          drawChart(classArray, class1hours, class2hours, class3hours, class4hours);
-       },
+  query.get(timeTableID, {
+    success: function(timeTable) {
+      var classes = timeTable.get("classes");
+      console.log(classes);
+
+      drawChart(classes);
+    },
       error: function(object, error) {
       // error is an instance of Parse.Error.
           console.log(error);
       }
-     });
+   });
  }
 
-function drawChart(stringClasses, class1hours, class2hours, class3hours, class4hours) {
+function drawChart(classes) {
   //var stringClasses = user.get("Classes");
   //var stringClasses = ["6.005", "6.004", "6.036", "Russian"];
   // Create the data table.
@@ -44,21 +56,16 @@ function drawChart(stringClasses, class1hours, class2hours, class3hours, class4h
   console.log("DRAW CHART");
   data.addColumn('string', 'Class');
   data.addColumn('number', 'Time spent');
-  console.log(class1hours);
-  console.log(class2hours);
-  console.log(class3hours);
-  console.log(class4hours);
-  data.addRows([
-    [String(stringClasses[0]), class1hours],
-    [String(stringClasses[1]), class2hours],
-    [String(stringClasses[2]), class3hours],
-    [String(stringClasses[3]), class4hours],
-  ]);
+  for (var course in classes) {
+    if (classes.hasOwnProperty(course)) {
+      data.addRows([String(course), classes.course]);
+    }
+  }
 
   // Set chart options
   var options = {'title':'Class Time Distribution',
-                 'width':800,
-                 'height':600};
+                 'width':400,
+                 'height':300};
 
   // Instantiate and draw our chart, passing in some options.
   var chart = new google.visualization.PieChart(document.getElementById('piechart'));
