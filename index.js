@@ -24,6 +24,7 @@ $(document).ready(function() {
     $('#login').hide();
     $('#signup').hide();
     fillTable();
+    drawChart();
   } else {
     $('#logout').hide();
   }
@@ -64,6 +65,7 @@ function login() {
       $('#logout').show();
       $('#userModal').modal('hide');
       fillTable();
+      drawChart();
     },
     error: function(user, error) {
       console.log("Error: " + error.code + " " + error.message);
