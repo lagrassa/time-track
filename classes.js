@@ -18,8 +18,19 @@ function fillTable() {
   var counter = 0;
   for (var course in classes) {
     if (classes.hasOwnProperty(course)) {
-      $('tbody').append('<tr style="font-size: 35px;" class=' + coloring[counter] + '><td>' + course + '</td><td>' + classes[1] + '</td>');
-      counter = (counter + 1) % 3;
+      var course = String(course); //cast to string, although unncessary
+      console.log(course);
+      var underScoreIndex = course.indexOf("_")
+      if (underScoreIndex == -1) {
+          $('tbody').append('<tr style="font-size: 35px;" class=' + coloring[counter] + '><td>' + course + '</td><td>' + classes[1] + '</td>');
+          counter = (counter + 1) % 3;
+      } else {
+         console.log('saw underscore');
+         var major = course.slice(0,underScoreIndex);
+         var courseNumber = course.slice(underScoreIndex+1, course.length);
+         var courseName = major + "." + courseNumber;
+          $('tbody').append('<tr style="font-size: 35px;" class=' + coloring[counter] + '><td>' +courseName+ '</td><td>' + classes[1] + '</td>');
+      }
     }
   }
 }
@@ -32,8 +43,12 @@ function drawChart() {
   data.addColumn('string', 'Class');
   data.addColumn('number', 'Time spent');
   for (var course in classes) {
+         var underScoreIndex = course.indexOf('_')
+         var major = course.slice(0,underScoreIndex);
+         var courseNumber = course.slice(underScoreIndex+1, course.length);
+         var courseName = major + "." + courseNumber;
     if (classes.hasOwnProperty(course)) {
-      data.addRow([String(course), classes[course]]);
+      data.addRow([String(courseName), classes[course]]);
     }
   }
 
