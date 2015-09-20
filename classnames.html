@@ -54,8 +54,7 @@
 
   $('#submitButton').click(function() {
     Parse.initialize("bLxJPXQ34sup0hAmY8DEdELkxgWQgLgQT47dCxnf", "FsrRgGQ2irMaA0imiB8KWK8r9eiVD6pkdLpGMzk2");
-    //Parse.User.logIn("butts", "buttocks").then(function(user) {
-      //var user = Parse.User.current();
+    var user = Parse.User.current();
 
     var timeTable= new Parse.Object("sampleTimeTable");
     var classArray = [];
@@ -65,7 +64,27 @@
       classArray.push(className);
     })
     console.log(classArray);
-    //user.set('Classes', classArray);
+    timeTable.set('Classes', classArray);
+    timeTable.save(null, {       
+        success: function(item) {
+	    var tableID = timeTable.id;
+	    console.log("ID NUMBER");
+	    console.log(tableID);
+	    user.set("tableID", tableID);
+	    timeTable.set("tableID", tableID)
+            timeTable.save(null, {       
+               success: function(item) {
+
+               },
+               error: function(error) {
+                }
+           });
+    },
+    error: function(error) {
+        //Failure Callback
+    }
+    });
+    
 
     });
 </script>
