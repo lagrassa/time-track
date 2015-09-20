@@ -7,9 +7,8 @@ function main() {
 
     sampleTimeTable.set("class1", 4);
     sampleTimeTable.set("class2", 5);
-    /sampleTimeTable.set("class3", 9);
+    sampleTimeTable.set("class3", 9);
     sampleTimeTable.set("class4", 10);
-    String id = sampleTimeTable.id;
     sampleTimeTable.set("userTableID", "somestring");
     //We call the save method, and pass in success and failure callback functions.
     sampleTimeTable.save(null, {       
