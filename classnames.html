@@ -22,20 +22,22 @@
   <div class="row">
     <div class="col-sm-6">
       <h3>Input Classes</h3>
-       <button class = "btn btn-primary active" id = 'submitButton' type="button">Submit!</button> 
-	  <form>
-	  Class 1:<br>
-	  <input type="text" id="class1">
-	  <br>
-	  Class 2:<br>
-	  <input type="text" id="class2">
-	  <br>
-	  Class 3:<br>
-	  <input type="text" id="class3">
-	  <br>
-	  Class 4:<br>
-	  <input type="text" id="class4">
-	</form> 
+  	  <form>
+    	  Class 1:<br>
+    	  <input type="text" class='class form-control'>
+    	  <br>
+    	  Class 2:<br>
+    	  <input type="text" class="class form-control">
+    	  <br>
+    	  Class 3:<br>
+    	  <input type="text" class="class form-control">
+    	  <br>
+    	  Class 4:<br>
+    	  <input type="text" class="class form-control">
+        <br>
+  	  </form>
+      <button class='btn btn-primary active' id='moreInput' type='button'>Add more classes</button>
+      <button class = "btn btn-primary active" id = 'submitButton' type="button">Submit!</button>
     </div>
     <div class="col-sm-6">
       <h3>Description</h3>
@@ -44,23 +46,26 @@
   </div>
 </div>
 <script>
+  var classCount = 5;
+  $('#moreInput').on('click', function() {
+    $('form').append("Class " + classCount + ":<br><input type='text' class='form-control'><br>");
+    classCount += 1;
+  });
 
- $('#submitButton').click(function() {
-  Parse.initialize("bLxJPXQ34sup0hAmY8DEdELkxgWQgLgQT47dCxnf", "FsrRgGQ2irMaA0imiB8KWK8r9eiVD6pkdLpGMzk2");
- Parse.User.logIn("butts", "buttocks").then(function(user) 
- {var user = Parse.User.current();
- }, function(error) {
+  $('#submitButton').click(function() {
+    Parse.initialize("bLxJPXQ34sup0hAmY8DEdELkxgWQgLgQT47dCxnf", "FsrRgGQ2irMaA0imiB8KWK8r9eiVD6pkdLpGMzk2");
+    Parse.User.logIn("butts", "buttocks").then(function(user) {
+      var user = Parse.User.current();
+    }, function(error) {
 
-});
-  var timeTable= new Parse.Object("sampleTimeTable");
-  var class1 = $("#class1").val();
-  var class2 = $("#class2").val();
-  var class3 = $("#class3").val();
-  var class4 = $("#class4").val();
-  var classArray = [class1, class2, class3, class4];
-  user.set('Classes', classArray);
- });
-  
+    });
+    var timeTable= new Parse.Object("sampleTimeTable");
+    var classArray = [];
+    $('.class').each(function() {
+      classArray.push($(this).text());
+    })
+    user.set('Classes', classArray);
+  });
 </script>
 </body>
 </html>
